@@ -19,9 +19,8 @@ public abstract class AbstractPage {
         driver.maximizeWindow();
     }
 
-    public boolean waitUntilElementVisible(WebElement element) {
+    public void waitUntilElementVisible(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver.getWebDriver(), Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOf(element));
-        return element.isDisplayed();
     }
 }

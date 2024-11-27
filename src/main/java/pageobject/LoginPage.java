@@ -23,21 +23,12 @@ public class LoginPage extends AbstractPage {
         PageFactory.initElements(driver.getWebDriver(), this);
     }
 
-    public void enterEmail(String userName) {
-        emailField.sendKeys(userName);
-    }
-
-    public void clickContinueButton() {
-        waitUntilElementVisible(continueButton);
+    public void signInWithCredentials(String email, String password){
+        waitUntilElementVisible(emailField);
+        emailField.sendKeys(email);
         continueButton.click();
-    }
-
-    public void enterPassword(String password) {
+        waitUntilElementVisible(passwordField);
         passwordField.sendKeys(password);
-    }
-
-    public void clickLogin() {
-        waitUntilElementVisible(signInSubmitButton);
         signInSubmitButton.click();
     }
 }

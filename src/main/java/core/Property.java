@@ -3,7 +3,8 @@ package core;
 public enum Property {
     BASE_URL,
     EMAIL,
-    PASSWORD;
+    PASSWORD,
+    AUTHORISE_USER_NAME;
 
     public String readProperty() {
         return PropertyReader.getProperty(getPropertyName());

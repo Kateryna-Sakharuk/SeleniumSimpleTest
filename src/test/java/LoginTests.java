@@ -17,16 +17,14 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
-    public void getUserAuthorization() {
+    public void userAuthorizationTest() {
         homePage.openHomePage();
-        homePage.singIn();
-        loginPage.enterEmail(EMAIL.readProperty());
-        loginPage.clickContinueButton();
-        loginPage.enterPassword(PASSWORD.readProperty());
-        loginPage.clickLogin();
+        homePage.clickSingInButton();
+        loginPage.signInWithCredentials(EMAIL.readProperty(), PASSWORD.readProperty());
 
-        assertTrue(homePage.isHomePageMainElementDisplayed(), "HomePage should be displayed");
-        assertTrue(homePage.isAccountNameContainsText("Hello, Katya"), "AccountName should be displayed");
+        assertTrue(homePage.isAmazonHeaderLogoDisplayed(), "Amazon logo should be displayed");
+        assertTrue(homePage.isHomePageMainBodyDisplayed(), "Home Page body should be displayed");
+        assertTrue(homePage.isAccountNameContainsText(AUTHORISE_USER_NAME.readProperty()), "Account name should be displayed");
     }
 }
 

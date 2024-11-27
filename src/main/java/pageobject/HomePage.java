@@ -9,11 +9,11 @@ import static core.Property.BASE_URL;
 
 public class HomePage extends AbstractPage {
     @FindBy(id = "nav-link-accountList")
-    WebElement singIn;
+    WebElement singInButton;
     @FindBy(xpath = "//div[@id='nav-logo']")
-    WebElement logo;
+    WebElement amazonHeaderLogo;
     @FindBy(xpath = "//div[@role = 'main']")
-    WebElement homePage;
+    WebElement homePageBody;
     @FindBy(xpath = "//span[@id ='nav-link-accountList-nav-line-1']")
     WebElement accountNameElement;
 
@@ -22,25 +22,27 @@ public class HomePage extends AbstractPage {
         PageFactory.initElements(driver.getWebDriver(), this);
     }
 
-    public void singIn() {
-        waitUntilElementVisible(singIn);
-        singIn.click();
+    public void clickSingInButton() {
+        waitUntilElementVisible(singInButton);
+        singInButton.click();
     }
 
     public void openHomePage() {
         openWindow(BASE_URL.readProperty());
-        isLogoDisplayed();
     }
 
-    public boolean isLogoDisplayed() {
-        return waitUntilElementVisible(logo);
+    public boolean isAmazonHeaderLogoDisplayed() {
+        waitUntilElementVisible(amazonHeaderLogo);
+        return amazonHeaderLogo.isDisplayed();
     }
 
-    public boolean isHomePageMainElementDisplayed() {
-        return homePage.isDisplayed();
+    public boolean isHomePageMainBodyDisplayed() {
+        waitUntilElementVisible(homePageBody);
+        return homePageBody.isDisplayed();
     }
 
     public boolean isAccountNameContainsText(String accountName) {
+        waitUntilElementVisible(accountNameElement);
         return accountNameElement.getText().contains(accountName);
     }
 }
