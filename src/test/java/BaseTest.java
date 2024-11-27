@@ -1,4 +1,3 @@
-
 import core.IWebDriverProvider;
 import core.WebDriverProvider;
 import org.junit.jupiter.api.AfterAll;

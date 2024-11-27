@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends AbstractPage {
-    @FindBy(id = "nav-link-accountList")
-    WebElement singIn;
     @FindBy(xpath = "//input[@type='email']")
     WebElement emailField;
 
@@ -23,11 +21,6 @@ public class LoginPage extends AbstractPage {
     public LoginPage(IWebDriverProvider driver) {
         super(driver);
         PageFactory.initElements(driver.getWebDriver(), this);
-    }
-
-    public void singIn() {
-        waitUntilElementVisible(singIn);
-        singIn.click();
     }
 
     public void enterEmail(String userName) {

@@ -24,9 +24,4 @@ public abstract class AbstractPage {
         wait.until(ExpectedConditions.visibilityOf(element));
         return element.isDisplayed();
     }
-    public boolean isCurrentUrlContains(String expectedUrl) {
-        String currentUrl = driver.getWebDriver().getCurrentUrl();
-        return currentUrl.contains(expectedUrl);
-    }
-
 }

@@ -5,33 +5,42 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage extends AbstractPage {
+import static core.Property.BASE_URL;
 
-    @FindBy(xpath = "//a[@id='nav-link-accountList']")
-    WebElement accountLink;
-    @FindBy(xpath = "//div[@id='a-page']")
-    WebElement homePageShow;
+public class HomePage extends AbstractPage {
+    @FindBy(id = "nav-link-accountList")
+    WebElement singIn;
+    @FindBy(xpath = "//div[@id='nav-logo']")
+    WebElement logo;
+    @FindBy(xpath = "//div[@role = 'main']")
+    WebElement homePage;
     @FindBy(xpath = "//span[@id ='nav-link-accountList-nav-line-1']")
-    WebElement accountName;
+    WebElement accountNameElement;
 
     public HomePage(IWebDriverProvider driver) {
         super(driver);
         PageFactory.initElements(driver.getWebDriver(), this);
     }
 
-    public void openHomePage(String baseUrl) {
-        openWindow(baseUrl);
+    public void singIn() {
+        waitUntilElementVisible(singIn);
+        singIn.click();
     }
 
-    public boolean isAccountLinkDisplayed() {
-        return waitUntilElementVisible(accountLink);
+    public void openHomePage() {
+        openWindow(BASE_URL.readProperty());
+        isLogoDisplayed();
     }
 
-    public boolean isHomePageDisplayed() {
-        return waitUntilElementVisible(homePageShow);
+    public boolean isLogoDisplayed() {
+        return waitUntilElementVisible(logo);
     }
 
-    public boolean isAccountNameDisplayed() {
-        return waitUntilElementVisible(accountName);
+    public boolean isHomePageMainElementDisplayed() {
+        return homePage.isDisplayed();
+    }
+
+    public boolean isAccountNameContainsText(String accountName) {
+        return accountNameElement.getText().contains(accountName);
     }
 }

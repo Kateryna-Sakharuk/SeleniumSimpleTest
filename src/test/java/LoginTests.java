@@ -1,10 +1,10 @@
-
-import org.assertj.core.api.SoftAssertions;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pageobject.HomePage;
 import pageobject.LoginPage;
+
+import static core.Property.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTests extends BaseTest {
     LoginPage loginPage;
@@ -18,20 +18,15 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void getUserAuthorization() {
-        homePage.openHomePage(Property.BASE_URL);
-        Assertions.assertTrue(homePage.isCurrentUrlContains(Property.WEBSITE_NAME));
-        Assertions.assertTrue(homePage.isAccountLinkDisplayed());
-        loginPage.singIn();
-        Assertions.assertTrue(loginPage.isCurrentUrlContains(Property.SIGN_IN_NAME));
-        loginPage.enterEmail(TestData.EMAIL);
+        homePage.openHomePage();
+        homePage.singIn();
+        loginPage.enterEmail(EMAIL.readProperty());
         loginPage.clickContinueButton();
-        loginPage.enterPassword(TestData.PASSWORD);
+        loginPage.enterPassword(PASSWORD.readProperty());
         loginPage.clickLogin();
 
-        SoftAssertions softAssertions = new SoftAssertions();
-        softAssertions.assertThat(homePage.isHomePageDisplayed()).isEqualTo(true);
-        softAssertions.assertThat(homePage.isAccountNameDisplayed()).isEqualTo(true);
-        softAssertions.assertAll();
+        assertTrue(homePage.isHomePageMainElementDisplayed(), "HomePage should be displayed");
+        assertTrue(homePage.isAccountNameContainsText("Hello, Katya"), "AccountName should be displayed");
     }
 }
 
