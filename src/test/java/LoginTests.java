@@ -22,6 +22,7 @@ public class LoginTests extends BaseTest {
         homePage.clickSingInButton();
         loginPage.signInWithCredentials(EMAIL.readProperty(), PASSWORD.readProperty());
 
+        homePage.waitUntilPageLoaded();
         assertTrue(homePage.isAmazonHeaderLogoDisplayed(), "Amazon logo should be displayed");
         assertTrue(homePage.isHomePageMainBodyDisplayed(), "Home Page body should be displayed");
         assertTrue(homePage.isAccountNameContainsText(AUTHORISE_USER_NAME.readProperty()), "Account name should be displayed");

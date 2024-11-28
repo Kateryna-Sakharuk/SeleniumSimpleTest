@@ -4,7 +4,6 @@ import core.IWebDriverProvider;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import static core.Property.BASE_URL;
 
 public class HomePage extends AbstractPage {
@@ -32,17 +31,14 @@ public class HomePage extends AbstractPage {
     }
 
     public boolean isAmazonHeaderLogoDisplayed() {
-        waitUntilElementVisible(amazonHeaderLogo);
         return amazonHeaderLogo.isDisplayed();
     }
 
     public boolean isHomePageMainBodyDisplayed() {
-        waitUntilElementVisible(homePageBody);
         return homePageBody.isDisplayed();
     }
 
     public boolean isAccountNameContainsText(String accountName) {
-        waitUntilElementVisible(accountNameElement);
         return accountNameElement.getText().contains(accountName);
     }
 }

@@ -1,6 +1,8 @@
 package pageobject;
 
 import core.IWebDriverProvider;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,5 +24,16 @@ public abstract class AbstractPage {
     public void waitUntilElementVisible(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver.getWebDriver(), Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+    public void waitUntilPageLoaded() {
+        WebDriverWait wait = new WebDriverWait(driver.getWebDriver(), Duration.ofSeconds(20));
+        try {
+            wait.until(webDriver -> {
+                String readyState = (String) ((JavascriptExecutor) driver.getWebDriver()).executeScript("return document.readyState");
+                return readyState.equals("complete");
+            });
+        } catch (TimeoutException e) {
+            throw new RuntimeException("Page did not load ", e);
+        }
     }
 }
