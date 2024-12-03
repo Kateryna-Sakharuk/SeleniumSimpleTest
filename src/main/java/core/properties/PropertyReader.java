@@ -1,4 +1,4 @@
-package core;
+package core.properties;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,5 +15,4 @@ public class PropertyReader {
     public static String getProperty(String key){
         return properties.getProperty(key);
     }
-
 }

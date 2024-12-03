@@ -1,6 +1,6 @@
 package pageobject;
 
-import core.IWebDriverProvider;
+import core.driver.IWebDriverProvider;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;

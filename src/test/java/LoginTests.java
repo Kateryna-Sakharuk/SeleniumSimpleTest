@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import pageobject.HomePage;
 import pageobject.LoginPage;
 
-import static core.Property.*;
+import static core.properties.Property.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTests extends BaseTest {

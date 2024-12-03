@@ -1,10 +1,11 @@
-package core;
+package core.properties;
 
 public enum Property {
     BASE_URL,
     EMAIL,
     PASSWORD,
-    AUTHORISE_USER_NAME;
+    AUTHORISE_USER_NAME,
+    SEARCH_PARAMETERS;
 
     public String readProperty() {
         return PropertyReader.getProperty(getPropertyName());
