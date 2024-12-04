@@ -19,6 +19,7 @@
         <assertj.core>3.25.3</assertj.core>
         <selenium.java>4.11.0</selenium.java>
         <junit>4.13.2</junit>
+        <lombok>1.18.20</lombok>
     </properties>
 
     <dependencies>
@@ -60,7 +61,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
+            <version>${lombok}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

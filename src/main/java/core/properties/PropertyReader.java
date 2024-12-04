@@ -13,6 +13,9 @@ public class PropertyReader {
         }
     }
     public static String getProperty(String key){
+        if(key == null){
+            throw new IllegalArgumentException("Key cannot be null");
+        }
         return properties.getProperty(key);
     }
 }

@@ -1,23 +1,23 @@
 package pageobject;
 
 import core.driver.IWebDriverProvider;
+import core.properties.PropertyReader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import static core.properties.Property.BASE_URL;
 
 public class HomePage extends AbstractPage {
-    @FindBy(id = "nav-link-accountList")
+    @FindBy(xpath = "//a[@data-nav-role = 'signin']")
     WebElement singInButton;
-    @FindBy(xpath = "//div[@id='nav-logo']")
+    @FindBy(xpath = "//div[@id = 'nav-logo']")
     WebElement amazonHeaderLogo;
     @FindBy(xpath = "//div[@role = 'main']")
     WebElement homePageBody;
-    @FindBy(xpath = "//span[@id ='nav-link-accountList-nav-line-1']")
+    @FindBy(xpath = " //div[@class = 'nav-line-1-container']//span[contains(@id, 'nav-line')]")
     WebElement accountNameElement;
-    @FindBy(xpath = "//input[@type ='text']")
+    @FindBy(xpath = "//input[@placeholder = 'Search Amazon']")
     WebElement searchField;
-    @FindBy(xpath = "//input[@id ='nav-search-submit-button']")
+    @FindBy(xpath = "//input[@id = 'nav-search-submit-button']")
     WebElement searchSubmitButton;
 
     public HomePage(IWebDriverProvider driver) {
@@ -31,7 +31,7 @@ public class HomePage extends AbstractPage {
     }
 
     public void openHomePage() {
-        openWindow(BASE_URL.readProperty());
+        openWindow(PropertyReader.getProperty("base.url"));
     }
 
     public boolean isAmazonHeaderLogoDisplayed() {
@@ -45,11 +45,10 @@ public class HomePage extends AbstractPage {
     public boolean isAccountNameContainsText(String accountName) {
         return accountNameElement.getText().contains(accountName);
     }
-    public void productSearch(String productName){
-        waitUntilElementVisible(searchField);
+
+    public void productSearch(String productName) {
         searchField.click();
         searchField.sendKeys(productName);
-        waitUntilElementVisible(searchSubmitButton);
         searchSubmitButton.click();
     }
 }

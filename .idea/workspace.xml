@@ -5,24 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf3089c-3fae-466c-bc22-8c3f6c02b37c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/cache/TestCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/cache/TestCacheKey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pageobject/ProductDetailPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pageobject/SearchResultPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pageobject/ShoppingList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ShoppingListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pageobject/AddToListModal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/SearchResultTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/IWebDriverProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/driver/IWebDriverProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/properties/Property.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/PropertyReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/properties/PropertyReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/WebDriverProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/driver/WebDriverProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/properties/Property.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/properties/PropertyReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/properties/PropertyReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pageobject/AbstractPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobject/AbstractPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pageobject/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobject/HomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pageobject/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobject/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageobject/ProductDetailPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobject/ProductDetailPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageobject/SearchResultPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobject/SearchResultPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/amazonTestData.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/amazonTestData.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ShoppingListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ShoppingListTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +81,7 @@
       <command value="mvn test" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.LoginTests">
+  <component name="RunManager" selected="JUnit.SearchResultTest">
     <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="seleniumSimpleTest" />
       <option name="PACKAGE_NAME" value="" />
@@ -107,21 +101,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginTests.userAuthorizationTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SearchResultTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="seleniumSimpleTest" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LoginTests" />
-      <option name="METHOD_NAME" value="userAuthorizationTest2" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="SearchResultTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShoppingListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SearchResultTest.searchProductContainsParameterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="seleniumSimpleTest" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ShoppingListTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="SearchResultTest" />
+      <option name="METHOD_NAME" value="searchProductContainsParameterTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -138,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LoginTests" />
-        <item itemvalue="JUnit.ShoppingListTest" />
+        <item itemvalue="JUnit.SearchResultTest" />
         <item itemvalue="JUnit.ShoppingListTest.SearchProductTest" />
+        <item itemvalue="JUnit.LoginTests" />
         <item itemvalue="JUnit.LoginTests.userAuthorizationTest" />
-        <item itemvalue="JUnit.LoginTests.userAuthorizationTest2" />
+        <item itemvalue="JUnit.SearchResultTest.searchProductContainsParameterTest" />
       </list>
     </recent_temporary>
   </component>
@@ -190,16 +184,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/LoginTests.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/LoginTests.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ShoppingListTest.java</url>
           <line>36</line>

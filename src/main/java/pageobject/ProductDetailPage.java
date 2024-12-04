@@ -9,13 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 import static core.cache.TestCacheKey.PRODUCT_NAME;
 
 public class ProductDetailPage extends AbstractPage {
-    @FindBy(xpath = "//input[@id ='add-to-wishlist-button-submit']")
+    @FindBy(xpath = "//span[@id='wishListMainButton']")
     WebElement addToListButton;
-    @FindBy(xpath = "//a[contains(text(), 'View Your List')]")
-    WebElement viewYourListButton;
     @FindBy(xpath = "//span[@id ='productTitle']")
     WebElement firstProductTitle;
-
 
     public ProductDetailPage(IWebDriverProvider driver) {
         super(driver);
@@ -23,13 +20,7 @@ public class ProductDetailPage extends AbstractPage {
     }
 
     public void addProductToShoppingList() {
-        waitUntilElementVisible(addToListButton);
         addToListButton.click();
-    }
-
-    public void clickYourListButton() {
-        waitUntilElementVisible(viewYourListButton);
-        viewYourListButton.click();
     }
 
     public void saveFirstProductName() {

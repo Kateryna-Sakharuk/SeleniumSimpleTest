@@ -22,11 +22,12 @@ public abstract class AbstractPage {
     }
 
     public void waitUntilElementVisible(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver.getWebDriver(), Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver.getWebDriver(), Duration.ofSeconds(15));
+        wait.pollingEvery(Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
     public void waitUntilPageLoaded() {
-        WebDriverWait wait = new WebDriverWait(driver.getWebDriver(), Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver.getWebDriver(), Duration.ofSeconds(5));
         try {
             wait.until(webDriver -> {
                 String readyState = (String) ((JavascriptExecutor) driver.getWebDriver()).executeScript("return document.readyState");
