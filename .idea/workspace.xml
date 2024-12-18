@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf3089c-3fae-466c-bc22-8c3f6c02b37c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pageobject/AddToListModal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/SearchResultTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pageobject/CaptchaAlertModal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/properties/Property.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/properties/PropertyReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/properties/PropertyReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pageobject/AbstractPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobject/AbstractPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/cache/TestCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/cache/TestCache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pageobject/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobject/HomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pageobject/ProductDetailPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobject/ProductDetailPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pageobject/SearchResultPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobject/SearchResultPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ShoppingListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ShoppingListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageobject/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageobject/LoginPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +74,7 @@
       <command value="mvn test" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SearchResultTest">
+  <component name="RunManager" selected="JUnit.SearchResultTest.searchProductContainsParameterTest">
     <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="seleniumSimpleTest" />
       <option name="PACKAGE_NAME" value="" />
@@ -132,11 +125,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SearchResultTest.searchProductContainsParameterTest" />
+        <item itemvalue="JUnit.LoginTests.userAuthorizationTest" />
+        <item itemvalue="JUnit.LoginTests" />
         <item itemvalue="JUnit.SearchResultTest" />
         <item itemvalue="JUnit.ShoppingListTest.SearchProductTest" />
-        <item itemvalue="JUnit.LoginTests" />
-        <item itemvalue="JUnit.LoginTests.userAuthorizationTest" />
-        <item itemvalue="JUnit.SearchResultTest.searchProductContainsParameterTest" />
       </list>
     </recent_temporary>
   </component>

@@ -20,8 +20,11 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//input[@id = 'nav-search-submit-button']")
     WebElement searchSubmitButton;
 
+    CaptchaAlertModal captchaAlertModal;
+
     public HomePage(IWebDriverProvider driver) {
         super(driver);
+        captchaAlertModal = new CaptchaAlertModal(driver);
         PageFactory.initElements(driver.getWebDriver(), this);
     }
 
@@ -32,6 +35,7 @@ public class HomePage extends AbstractPage {
 
     public void openHomePage() {
         openWindow(PropertyReader.getProperty("base.url"));
+        captchaAlertModal.handleCaptchaIfPresent();
     }
 
     public boolean isAmazonHeaderLogoDisplayed() {

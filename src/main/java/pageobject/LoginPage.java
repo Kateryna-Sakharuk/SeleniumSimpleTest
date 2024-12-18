@@ -15,8 +15,11 @@ public class LoginPage extends AbstractPage {
     @FindBy(xpath = "//input[@id='signInSubmit']")
     WebElement signInSubmitButton;
 
+    CaptchaAlertModal captchaAlertModal;
+
     public LoginPage(IWebDriverProvider driver) {
         super(driver);
+        captchaAlertModal = new CaptchaAlertModal(driver);
         PageFactory.initElements(driver.getWebDriver(), this);
     }
 
@@ -24,8 +27,10 @@ public class LoginPage extends AbstractPage {
         waitUntilElementVisible(emailField);
         emailField.sendKeys(email);
         continueButton.click();
+        captchaAlertModal.handleCaptchaIfPresent();
         waitUntilElementVisible(passwordField);
         passwordField.sendKeys(password);
         signInSubmitButton.click();
+        captchaAlertModal.handleCaptchaIfPresent();
     }
 }
