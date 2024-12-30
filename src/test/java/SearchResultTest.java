@@ -1,16 +1,18 @@
-
 import core.properties.PropertyReader;
-import org.assertj.core.api.SoftAssertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import io.qameta.allure.Step;
+import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 import pageobject.*;
+import org.testng.Assert;
 
 public class SearchResultTest extends BaseTest {
     HomePage homePage;
     LoginPage loginPage;
     SearchResultPage searchResultPage;
 
-    @BeforeEach
+    @BeforeMethod
+    @Parameters("browserName")
+    @Step("Initializing pages for browser: {browserName}")
     public void setUpPages() {
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
@@ -18,19 +20,19 @@ public class SearchResultTest extends BaseTest {
     }
 
     @Test
-    public void searchProductContainsParameterTest(){
-
+    @Step("Search for product using parameter")
+    public void searchProductContainsParameterTest() {
         homePage.openHomePage();
         homePage.clickSingInButton();
         loginPage.signInWithCredentials(PropertyReader.getProperty("email"), PropertyReader.getProperty("password"));
         homePage.productSearch(PropertyReader.getProperty("search.parameters"));
 
-        SoftAssertions assertions = new SoftAssertions();
+        SoftAssert softAssert = new SoftAssert();
         for (String product : searchResultPage.getProductResult()) {
-            assertions.assertThat(product.toLowerCase())
-                    .as("Product result does not contain the search parameter: " + PropertyReader.getProperty("search.parameters").toLowerCase())
-                    .contains(PropertyReader.getProperty("search.parameters").toLowerCase());
+            Assert.assertTrue(product.toLowerCase()
+                    .contains(PropertyReader.getProperty("search.parameters").toLowerCase()),
+                    "Product result does not contain the search parameter: " + PropertyReader.getProperty("search.parameters").toLowerCase());
         }
-        assertions.assertAll();
+        softAssert.assertAll();
     }
 }

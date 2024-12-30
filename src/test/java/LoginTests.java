@@ -1,22 +1,27 @@
 import core.properties.PropertyReader;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import io.qameta.allure.Step;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 import pageobject.HomePage;
 import pageobject.LoginPage;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.testng.Assert.assertTrue;
 
 public class LoginTests extends BaseTest {
     LoginPage loginPage;
     HomePage homePage;
 
-    @BeforeEach
+    @BeforeMethod
+    @Parameters("browserName")
+    @Step("Initializing pages for browser: {browserName}")
     public void setUpPages() {
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
+        logger.info("set up pages message");
     }
 
     @Test
+    @Step("User authorization test")
     public void userAuthorizationTest() {
         homePage.openHomePage();
         homePage.clickSingInButton();

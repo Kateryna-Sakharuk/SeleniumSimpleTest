@@ -1,8 +1,8 @@
 import core.cache.TestCache;
 import core.properties.PropertyReader;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import io.qameta.allure.Step;
+import org.testng.Assert;
+import org.testng.annotations.*;
 import pageobject.*;
 
 import static core.cache.TestCacheKey.PRODUCT_NAME;
@@ -15,8 +15,9 @@ public class ShoppingListTest extends BaseTest {
     ShoppingList shoppingList;
     AddToListModal addToListModal;
 
-
-    @BeforeEach
+    @BeforeMethod
+    @Parameters("browserName")
+    @Step("Initializing pages for browser: {browserName}")
     public void setUpPages() {
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
@@ -27,17 +28,17 @@ public class ShoppingListTest extends BaseTest {
     }
 
     @Test
-    public void SearchProductTest() {
+    @Step("Search for product")
+    public void searchProductTest() {
         homePage.openHomePage();
         homePage.clickSingInButton();
         loginPage.signInWithCredentials(PropertyReader.getProperty("email"), PropertyReader.getProperty("password"));
         homePage.productSearch(PropertyReader.getProperty("search.parameters"));
-        searchResultPage.ClickOnFirstProduct();
+        searchResultPage.clickOnFirstProduct();
         productDetailPage.saveFirstProductName();
         productDetailPage.addProductToShoppingList();
         addToListModal.clickYourListButton();
 
-        Assertions.assertEquals(TestCache.getStringValue(PRODUCT_NAME), shoppingList.getFirstProductName(), "The names do not match!");
-
+        Assert.assertEquals(shoppingList.getFirstProductName(), TestCache.getStringValue(PRODUCT_NAME), "The names do not match!");
     }
 }
