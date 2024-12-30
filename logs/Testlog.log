@@ -1,7 +1,0 @@
-14:17:38.960 [main] INFO   -  
- --------------- Test Execution STARTED --------------- 
- 
-14:17:39.038 [main] INFO  DriverManager - New driver manager created
-14:17:39.039 [main] INFO  DriverManager - Chrome driver selected
-14:17:46.355 [main] INFO   - set up peges message
-14:17:46.563 [main] INFO   - LoginTests.userAuthorizationTest --- Test case STARTED

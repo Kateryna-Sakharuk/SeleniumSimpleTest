@@ -30,7 +30,7 @@
         <allure.reports.version>2.8.0</allure.reports.version>
         <aspectj.version>1.9.20.1</aspectj.version>
         <!-- Plugin Versions -->
-        <maven.surefire.plugin.version>3.1.2</maven.surefire.plugin.version>
+        <maven.surefire.plugin.version>3.0.0-M7</maven.surefire.plugin.version>
         <download-maven-plugin.version>1.6.2</download-maven-plugin.version>
     </properties>
 
