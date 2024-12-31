@@ -117,8 +117,11 @@
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
-                        <suiteXmlFile>regression-test-suite.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <browserName>chrome</browserName>
+                        <testEnv>local</testEnv>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
 
