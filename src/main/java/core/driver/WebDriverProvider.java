@@ -3,6 +3,7 @@ import core.cache.TestCache;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,11 +22,21 @@ public class WebDriverProvider implements IWebDriverProvider {
     public WebDriver getWebDriver() {
         String browserName = TestCache.getStringValue(BROWSER_NAME);
         if (driver == null) {
+            // Set default headless mode to true if not specified
+            boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));  // Default is true
+
+            // Initialize ChromeOptions and configure for headless mode by default
+            ChromeOptions options = new ChromeOptions();
+            if (headless) {
+                options.addArguments("--headless");
+                options.addArguments("--disable-gpu");  // Optional: to ensure proper rendering in headless mode
+                options.addArguments("--window-size=1920x1080");  // Optional: set default window size for headless
+            }
             switch (Objects.requireNonNull(browserName).toLowerCase()) {
                 case "chrome" -> {
                     log.info("Chrome driver selected");
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    driver = new ChromeDriver(options);
                 }
                 case "firefox" -> {
                     log.info("Firefox driver selected");
