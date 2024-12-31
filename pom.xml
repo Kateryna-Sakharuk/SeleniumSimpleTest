@@ -116,11 +116,14 @@
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <suiteXmlFile>${suite}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <browserName>chrome</browserName>
-                        <testEnv>local</testEnv>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <browserName>${browserName}</browserName>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <testEnv>${testEnv}</testEnv>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
