@@ -3,7 +3,7 @@ package core.driver;
 import org.openqa.selenium.WebDriver;
 
 public interface IWebDriverProvider {
-    WebDriver getWebDriver();
+     WebDriver getWebDriver();
 
     void maximizeWindow();
 

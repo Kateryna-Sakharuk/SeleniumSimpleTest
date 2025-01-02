@@ -1,0 +1,12 @@
+stage('Run Tests') {
+    steps {
+        sh '''
+            export webdriver.chrome.driver=C:/driver/chromedriver
+            cd home/useradmin/files/
+            mvn clean test
+            -Dsuite="src/test/resources/testng.xml"
+            -DbrowserName=chrome
+            -DtestEnv=local
+        '''
+    }
+}

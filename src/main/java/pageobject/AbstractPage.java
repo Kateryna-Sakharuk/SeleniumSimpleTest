@@ -1,5 +1,4 @@
 package pageobject;
-
 import core.driver.IWebDriverProvider;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
@@ -15,7 +14,6 @@ public abstract class AbstractPage {
     public AbstractPage(IWebDriverProvider driver) {
         this.driver = driver;
     }
-
     public void openWindow(String url) {
         driver.getWebDriver().get(url);
         driver.maximizeWindow();

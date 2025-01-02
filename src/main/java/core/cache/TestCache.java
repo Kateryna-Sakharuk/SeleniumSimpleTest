@@ -1,16 +1,13 @@
 package core.cache;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class TestCache {
     private static final Map<String, Object> sessionMap = new HashMap<>();
-    
 
     public static void put(TestCacheKey key, Object value) {
         sessionMap.put(key.getKey(), value);
     }
-
 
     public static Object get(TestCacheKey key) {
         return sessionMap.get(key.getKey());

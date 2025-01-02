@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchResultPage extends AbstractPage {
-    @FindBy(xpath = "//div[@data-component-type='s-search-result']//span[contains(@class, 'a-text-normal')]")
+    @FindBy(xpath = "//div[@data-component-type='s-search-result']//a//h2//span")
     List<WebElement> listOfProducts;
     public SearchResultPage(IWebDriverProvider driver) {
         super(driver);
         PageFactory.initElements(driver.getWebDriver(), this);
     }
 
-    public void ClickOnFirstProduct() {
+    public void clickOnFirstProduct() {
         listOfProducts.get(0).click();
     }
 
