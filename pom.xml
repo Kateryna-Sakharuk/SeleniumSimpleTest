@@ -124,7 +124,7 @@
                         <browserName>${browserName}</browserName>
                         <!--suppress UnresolvedMavenProperty -->
                         <testEnv>${testEnv}</testEnv>
-                        <webdriver.chrome.driver>C:/driver/chromedriver</webdriver.chrome.driver>
+                        <webdriver.chrome.driver>C:/driver/chromedriver.exe</webdriver.chrome.driver>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
