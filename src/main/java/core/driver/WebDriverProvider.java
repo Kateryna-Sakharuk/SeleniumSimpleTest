@@ -14,9 +14,9 @@ import static core.cache.TestCacheKey.BROWSER_NAME;
 
 public class WebDriverProvider implements IWebDriverProvider {
     private WebDriver driver;
-    private static final Logger log = LogManager.getLogger(DriverManager.class.getSimpleName());
+    private static final Logger log = LogManager.getLogger(WebDriverProvider.class.getSimpleName());
     public WebDriverProvider(){
-        log.info("New driver manager created");
+        log.info("New WebDriverProvider created");
     }
 
     @Override

@@ -5,7 +5,7 @@ import org.testng.asserts.SoftAssert;
 import pageobject.*;
 import org.testng.Assert;
 
-public class SearchResultTest extends BaseTest {
+public class SearchResultAuthorizedUserTest extends BaseTest {
     HomePage homePage;
     LoginPage loginPage;
     SearchResultPage searchResultPage;

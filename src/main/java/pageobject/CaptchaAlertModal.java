@@ -25,7 +25,7 @@ public class CaptchaAlertModal extends AbstractPage {
     public void handleCaptchaIfPresent() {
         try {
             if (captcha.isDisplayed()) {
-                WebDriverWait wait = new WebDriverWait(driver.getWebDriver(), Duration.ofSeconds(60));
+                WebDriverWait wait = new WebDriverWait(driver.getWebDriver(), Duration.ofSeconds(3));
                 WebElement captchaElement = wait.until(ExpectedConditions.visibilityOf(captcha));
                 log.info("Captcha detected! Please solve it manually.");
                 wait.until(ExpectedConditions.invisibilityOf(captchaElement));

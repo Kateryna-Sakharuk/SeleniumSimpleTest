@@ -12,9 +12,9 @@
             <class name="LoginTests" />
         </classes>
     </test>
-    <test name="SearchResultTest">
+    <test name="SearchResultAuthorizedUserTest">
         <classes>
-            <class name="SearchResultTest" />
+            <class name="SearchResultAuthorizedUserTest" />
         </classes>
     </test>
     <test name="ShoppingListTest">
