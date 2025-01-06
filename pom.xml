@@ -57,13 +57,6 @@
             <version>${testng.version}</version>
         </dependency>
 
-        <!-- WebDriverManager (for automatic driver management) -->
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
-        </dependency>
-
         <!-- Guava (for utility methods) -->
         <dependency>
             <groupId>com.google.guava</groupId>
