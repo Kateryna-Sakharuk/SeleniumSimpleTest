@@ -1,9 +1,13 @@
+package websites.amazon;
+
 import core.properties.PropertyReader;
-import io.qameta.allure.Step;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
-import pageobject.*;
 import org.testng.Assert;
+import pageobject.amazon.HomePage;
+import pageobject.amazon.LoginPage;
+import pageobject.amazon.SearchResultPage;
+import websites.BaseTest;
 
 public class SearchResultAuthorizedUserTest extends BaseTest {
     HomePage homePage;
@@ -12,7 +16,6 @@ public class SearchResultAuthorizedUserTest extends BaseTest {
 
     @BeforeMethod
     @Parameters("browserName")
-    @Step("Initializing pages for browser: {browserName}")
     public void setUpPages() {
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
@@ -20,7 +23,7 @@ public class SearchResultAuthorizedUserTest extends BaseTest {
     }
 
     @Test
-    @Step("Search for product using parameter")
+
     public void searchProductContainsParameterTest() {
         homePage.openHomePage();
         homePage.clickSingInButton();
@@ -30,7 +33,7 @@ public class SearchResultAuthorizedUserTest extends BaseTest {
         SoftAssert softAssert = new SoftAssert();
         for (String product : searchResultPage.getProductResult()) {
             Assert.assertTrue(product.toLowerCase()
-                    .contains(PropertyReader.getProperty("search.parameters").toLowerCase()),
+                            .contains(PropertyReader.getProperty("search.parameters").toLowerCase()),
                     "Product result does not contain the search parameter: " + PropertyReader.getProperty("search.parameters").toLowerCase());
         }
         softAssert.assertAll();

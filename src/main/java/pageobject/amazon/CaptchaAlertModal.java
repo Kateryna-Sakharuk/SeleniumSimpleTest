@@ -1,4 +1,4 @@
-package pageobject;
+package pageobject.amazon;
 
 import core.driver.IWebDriverProvider;
 import io.qameta.allure.Step;
@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageobject.AbstractPage;
 
 import java.time.Duration;
 
@@ -21,11 +22,11 @@ public class CaptchaAlertModal extends AbstractPage {
         super(driver);
         PageFactory.initElements(driver.getWebDriver(), this);
     }
-    @Step
+    @Step("Handle captcha if present: Wait for the captcha to appear, solve it manually, and continue the test.")
     public void handleCaptchaIfPresent() {
         try {
             if (captcha.isDisplayed()) {
-                WebDriverWait wait = new WebDriverWait(driver.getWebDriver(), Duration.ofSeconds(3));
+                WebDriverWait wait = new WebDriverWait(driver.getWebDriver(), Duration.ofSeconds(60));
                 WebElement captchaElement = wait.until(ExpectedConditions.visibilityOf(captcha));
                 log.info("Captcha detected! Please solve it manually.");
                 wait.until(ExpectedConditions.invisibilityOf(captchaElement));

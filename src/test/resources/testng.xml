@@ -2,6 +2,7 @@
 <suite name="TestingSuite" parallel="false" thread-count="1">
     <parameter name="browserName" value="chrome" />
     <parameter name="testEnv" value="local"/>
+    <parameter name="testData" value="amazonTestData.properties"/>
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg" />
         <listener class-name="core.report.TestResultsListener" />
@@ -9,22 +10,22 @@
     </listeners>
     <test name="LoginTest">
         <classes>
-            <class name="LoginTests" />
+            <class name="websites.amazon.LoginTests" />
         </classes>
     </test>
-    <test name="SearchResultAnonymousUserTest">
+    <test name="websites.amazon.SearchResultAnonymousUserTest">
         <classes>
-            <class name="SearchResultAnonymousUserTest" />
+            <class name="websites.amazon.SearchResultAnonymousUserTest" />
         </classes>
     </test>
-   <test name="SearchResultAuthorizedUserTest">
+   <test name="websites.amazon.SearchResultAuthorizedUserTest">
         <classes>
-            <class name="SearchResultAuthorizedUserTest" />
+            <class name="websites.amazon.SearchResultAuthorizedUserTest" />
         </classes>
     </test>
-    <test name="ShoppingListTest">
+    <test name="websites.amazon.ShoppingListTest">
         <classes>
-            <class name="ShoppingListTest" />
+            <class name="websites.amazon.ShoppingListTest" />
         </classes>
     </test>
 </suite>

@@ -1,10 +1,15 @@
+package websites.amazon;
+
 import core.properties.PropertyReader;
+
 import io.qameta.allure.Step;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageobject.HomePage;
-import pageobject.LoginPage;
+import pageobject.amazon.HomePage;
+import pageobject.amazon.LoginPage;
+import websites.BaseTest;
+
 import static org.testng.Assert.assertTrue;
 
 public class LoginTests extends BaseTest {
@@ -13,15 +18,13 @@ public class LoginTests extends BaseTest {
 
     @BeforeMethod
     @Parameters("browserName")
-    @Step("Initializing pages for browser: {browserName}")
     public void setUpPages() {
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
-        logger.info("set up pages message");
+        BaseTest.logger.info("set up pages message");
     }
 
     @Test
-    @Step("User authorization test")
     public void userAuthorizationTest() {
         homePage.openHomePage();
         homePage.clickSingInButton();

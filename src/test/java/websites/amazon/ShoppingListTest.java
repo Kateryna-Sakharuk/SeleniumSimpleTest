@@ -1,9 +1,17 @@
+package websites.amazon;
+
 import core.cache.TestCache;
 import core.properties.PropertyReader;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pageobject.*;
+import pageobject.amazon.AddToListModal;
+import pageobject.amazon.HomePage;
+import pageobject.amazon.LoginPage;
+import pageobject.amazon.ProductDetailPage;
+import pageobject.amazon.SearchResultPage;
+import pageobject.amazon.ShoppingList;
+import websites.BaseTest;
 
 import static core.cache.TestCacheKey.PRODUCT_NAME;
 
@@ -17,7 +25,6 @@ public class ShoppingListTest extends BaseTest {
 
     @BeforeMethod
     @Parameters("browserName")
-    @Step("Initializing pages for browser: {browserName}")
     public void setUpPages() {
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
@@ -28,7 +35,6 @@ public class ShoppingListTest extends BaseTest {
     }
 
     @Test
-    @Step("Search for product")
     public void searchProductTest() {
         homePage.openHomePage();
         homePage.clickSingInButton();

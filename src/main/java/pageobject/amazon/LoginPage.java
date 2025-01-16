@@ -1,9 +1,11 @@
-package pageobject;
+package pageobject.amazon;
 
 import core.driver.IWebDriverProvider;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pageobject.AbstractPage;
 
 public class LoginPage extends AbstractPage {
     @FindBy(xpath = "//input[@type='email']")
@@ -22,7 +24,7 @@ public class LoginPage extends AbstractPage {
         captchaAlertModal = new CaptchaAlertModal(driver);
         PageFactory.initElements(driver.getWebDriver(), this);
     }
-
+    @Step("Sign in with email: {email} and password: {password}")
     public void signInWithCredentials(String email, String password) {
         waitUntilElementVisible(emailField);
         emailField.sendKeys(email);

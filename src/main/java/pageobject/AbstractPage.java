@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public abstract class AbstractPage {
-    IWebDriverProvider driver;
+    protected IWebDriverProvider driver;
 
     public AbstractPage(IWebDriverProvider driver) {
         this.driver = driver;
