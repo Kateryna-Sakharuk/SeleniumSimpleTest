@@ -21,7 +21,7 @@ public class CaptchaAlertModal extends AbstractPage {
         super(driver);
         PageFactory.initElements(driver.getWebDriver(), this);
     }
-    @Step
+    @Step("Handle captcha if present: Wait for the captcha to appear, solve it manually, and continue the test.")
     public void handleCaptchaIfPresent() {
         try {
             if (captcha.isDisplayed()) {

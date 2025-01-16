@@ -1,5 +1,4 @@
 import core.properties.PropertyReader;
-import io.qameta.allure.Step;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import pageobject.*;
@@ -12,7 +11,6 @@ public class SearchResultAuthorizedUserTest extends BaseTest {
 
     @BeforeMethod
     @Parameters("browserName")
-    @Step("Initializing pages for browser: {browserName}")
     public void setUpPages() {
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
@@ -20,7 +18,6 @@ public class SearchResultAuthorizedUserTest extends BaseTest {
     }
 
     @Test
-    @Step("Search for product using parameter")
     public void searchProductContainsParameterTest() {
         homePage.openHomePage();
         homePage.clickSingInButton();

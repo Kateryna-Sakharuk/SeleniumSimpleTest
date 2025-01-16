@@ -12,19 +12,19 @@
             <class name="LoginTests" />
         </classes>
     </test>
-<!--    <test name="SearchResultAnonymousUserTest">-->
-<!--        <classes>-->
-<!--            <class name="SearchResultAnonymousUserTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--   <test name="SearchResultAuthorizedUserTest">-->
-<!--        <classes>-->
-<!--            <class name="SearchResultAuthorizedUserTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="ShoppingListTest">-->
-<!--        <classes>-->
-<!--            <class name="ShoppingListTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="SearchResultAnonymousUserTest">
+        <classes>
+            <class name="SearchResultAnonymousUserTest" />
+        </classes>
+    </test>
+   <test name="SearchResultAuthorizedUserTest">
+        <classes>
+            <class name="SearchResultAuthorizedUserTest" />
+        </classes>
+    </test>
+    <test name="ShoppingListTest">
+        <classes>
+            <class name="ShoppingListTest" />
+        </classes>
+    </test>
 </suite>

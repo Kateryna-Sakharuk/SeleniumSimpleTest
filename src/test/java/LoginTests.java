@@ -1,5 +1,4 @@
 import core.properties.PropertyReader;
-import io.qameta.allure.Step;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -13,7 +12,6 @@ public class LoginTests extends BaseTest {
 
     @BeforeMethod
     @Parameters("browserName")
-    @Step("Initializing pages for browser: {browserName}")
     public void setUpPages() {
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
@@ -21,7 +19,6 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
-    @Step("User authorization test")
     public void userAuthorizationTest() {
         homePage.openHomePage();
         homePage.clickSingInButton();

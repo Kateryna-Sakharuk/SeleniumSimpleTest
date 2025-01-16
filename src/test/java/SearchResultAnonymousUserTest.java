@@ -1,5 +1,4 @@
 import core.properties.PropertyReader;
-import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -16,7 +15,6 @@ public class SearchResultAnonymousUserTest extends BaseTest {
 
     @BeforeMethod
     @Parameters("browserName")
-    @Step("Initializing pages for browser: {browserName}")
     public void setUpPages() {
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
@@ -24,7 +22,6 @@ public class SearchResultAnonymousUserTest extends BaseTest {
     }
 
     @Test
-    @Step("Search for product using parameter")
     public void searchProductContainsParameterTest() {
         homePage.openHomePage();
         homePage.productSearch(PropertyReader.getProperty("search.parameters"));
