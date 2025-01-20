@@ -17,6 +17,7 @@ import org.testng.annotations.Parameters;
 
 import static core.cache.TestCacheKey.BROWSER_NAME;
 import static core.cache.TestCacheKey.ENV_NAME;
+import static core.cache.TestCacheKey.HUB_URL;
 
 @Listeners({AllureTestNg.class})
 public class BaseTest {
@@ -24,10 +25,11 @@ public class BaseTest {
     public static final Logger logger = LogManager.getLogger("");
     protected PropertyReader propertyReader;
     @BeforeClass
-    @Parameters({"browserName", "testEnv", "testData"})
-    public void setUp( String browserName, String testEnv, String testData) {
+    @Parameters({"browserName", "testEnv", "testData", "hubUrl"})
+    public void setUp( String browserName, String testEnv, String testData, String hubUrl) {
         TestCache.put(BROWSER_NAME, browserName);
         TestCache.put(ENV_NAME, testEnv);
+        TestCache.put(HUB_URL, hubUrl);
         driver = new WebDriverProvider();
         driver.getWebDriver();
         propertyReader = new PropertyReader(testData);

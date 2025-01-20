@@ -3,6 +3,7 @@
     <parameter name="browserName" value="chrome" />
     <parameter name="testEnv" value="local"/>
     <parameter name="testData" value="googleTestData.properties"/>
+    <parameter name="hubUrl" value="http://localhost:4444/wd/hub"/>
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg" />
         <listener class-name="core.report.TestResultsListener" />
