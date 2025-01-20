@@ -129,12 +129,6 @@
                         <!--suppress UnresolvedMavenProperty -->
                         <suiteXmlFile>${suite}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>io.qameta.allure.testng.AllureTestNg</value>
-                        </property>
-                    </properties>
                     <systemPropertyVariables>
                         <!--suppress UnresolvedMavenProperty -->
                         <browserName>${browserName}</browserName>
@@ -165,7 +159,7 @@
                         https://github.com/allure-framework/allure2/releases/download/${allure.reports.version}/allure-${allure.reports.version}.zip
                     </allureDownloadUrl>
                     <propertiesFilePath>${basedir}/src/main/resources/allure.properties</propertiesFilePath>
-                    <reportDirectory>${basedir}/allure-report</reportDirectory>
+                    <reportDirectory>${basedir}/target/allure-report</reportDirectory>
                 </configuration>
             </plugin>
 

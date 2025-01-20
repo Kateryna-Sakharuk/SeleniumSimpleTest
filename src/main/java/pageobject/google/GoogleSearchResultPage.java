@@ -16,7 +16,7 @@ public class GoogleSearchResultPage extends AbstractPage {
         super(driver);
         PageFactory.initElements(driver.getWebDriver(), this);
     }
-    @FindBy(xpath = "//div[@id='search']")
+    @FindBy(xpath = "//*[@id=\"rso\"]/div")
     List<WebElement> listOfResults;
     @Step("Get the list of product titles from the search results")
     public List<String> getGoogleProductResult() {

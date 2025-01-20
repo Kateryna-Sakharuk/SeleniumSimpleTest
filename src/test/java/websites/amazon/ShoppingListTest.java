@@ -2,7 +2,6 @@ package websites.amazon;
 
 import core.cache.TestCache;
 import core.properties.PropertyReader;
-import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pageobject.amazon.AddToListModal;
