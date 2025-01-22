@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class PropertyReader {
-    private final String BASE_PROPERTY_PATH = "src/test/resources/%s";
+    private final String BASE_PROPERTY_PATH = "src/test/resources/properties/%s";
     private static final Properties properties = new Properties();
 
     public PropertyReader(String testData) {
