@@ -10,6 +10,8 @@ import pageobject.google.GoogleHomePage;
 import pageobject.google.GoogleSearchResultPage;
 import websites.BaseTest;
 
+import java.util.List;
+
 public class GoogleSearchResultTest extends BaseTest {
     GoogleHomePage googleHomePage;
     GoogleSearchResultPage googleSearchResultPage;
@@ -27,6 +29,8 @@ public class GoogleSearchResultTest extends BaseTest {
         googleHomePage.productSearch(PropertyReader.getProperty("search.parameters"));
 
         SoftAssert softAssert = new SoftAssert();
+        List<String> googleProductsResult = googleSearchResultPage.getGoogleProductResult();
+        softAssert.assertTrue(googleProductsResult.size() >= 0);
         for (String product : googleSearchResultPage.getGoogleProductResult()) {
             Assert.assertTrue(product.toLowerCase()
                             .contains(PropertyReader.getProperty("search.parameters").toLowerCase()),

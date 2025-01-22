@@ -14,17 +14,17 @@
             <class name="websites.amazon.LoginTests" />
         </classes>
     </test>
-    <test name="websites.amazon.SearchResultAnonymousUserTest">
+    <test name="SearchResultAnonymousUserTest">
         <classes>
             <class name="websites.amazon.SearchResultAnonymousUserTest" />
         </classes>
     </test>
-   <test name="websites.amazon.SearchResultAuthorizedUserTest">
+   <test name="SearchResultAuthorizedUserTest">
         <classes>
             <class name="websites.amazon.SearchResultAuthorizedUserTest" />
         </classes>
     </test>
-    <test name="websites.amazon.ShoppingListTest">
+    <test name="ShoppingListTest">
         <classes>
             <class name="websites.amazon.ShoppingListTest" />
         </classes>

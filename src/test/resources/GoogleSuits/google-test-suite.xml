@@ -1,17 +1,16 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="GoogleFailedSuite" parallel="false" thread-count="1">
+<suite name="GoogleSuite" parallel="false" thread-count="1">
     <parameter name="browserName" value="chrome" />
-    <parameter name="testEnv" value="local"/>
+    <parameter name="testEnv" value="remote"/>
     <parameter name="testData" value="googleTestData.properties"/>
-    <parameter name="hubUrl" value="http://localhost:4444/wd/hub"/>
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg" />
         <listener class-name="core.report.TestResultsListener" />
         <listener class-name="core.report.TestReporter" />
     </listeners>
-    <test name="GoogleFailedSearchProduct">
+    <test name="GoogleSearchProduct">
         <classes>
-            <class name="websites.google.GoogleFailedSearchResultTest" />
+            <class name="websites.google.GoogleSearchResultTest" />
         </classes>
     </test>
 </suite>

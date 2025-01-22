@@ -6,19 +6,28 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Kateryna-Sakharuk/SeleniumSimpleTest'
+                git branch: 'develop_new_website', url: 'https://github.com/Kateryna-Sakharuk/SeleniumSimpleTest'
             }
         }
         stage('Run Tests') {
             steps {
                 bat """
                 mvn clean test ^
-                -Dheadless=false ^
-                -Dsuite=src/test/resources/testng.xml ^
+                -Dsuite=src/test/resources/google-failed-test-suite.xml ^
                 -DbrowserName=chrome ^
                 -DtestEnv=local ^
                 -Dwebdriver.chrome.driver=%WEBDRIVER_CHROME_DRIVER%
                 """
+            }
+        }
+        stage('Copy Allure History') {
+            steps {
+                bat """
+                if exist "allure-report\\history" (
+                xcopy /E /I /Y "allure-report\\history" "target\\allure-results\\history"
+                   )
+                """
+
             }
         }
     }
@@ -27,8 +36,9 @@ pipeline {
             allure([
                 includeProperties: false,
                 jdk: '',
-                results: [[path: 'C:/Users/katya/Desktop/TA/tasks/seleniumSimpleTest/allure-report']]
+                results: [[path: 'target/allure-results']]
             ])
         }
     }
 }
+

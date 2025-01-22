@@ -1,6 +1,7 @@
 package core.driver;
 
 import core.cache.TestCache;
+import core.properties.PropertyReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,7 @@ import java.net.URL;
 import java.util.Objects;
 
 import static core.cache.TestCacheKey.BROWSER_NAME;
-import static core.cache.TestCacheKey.HUB_URL;
+import static core.cache.TestCacheKey.TEST_ENV;
 
 public class WebDriverProvider implements IWebDriverProvider {
     private WebDriver driver;
@@ -26,45 +27,56 @@ public class WebDriverProvider implements IWebDriverProvider {
 
     @Override
     public WebDriver getWebDriver() {
-        String browserName = TestCache.getStringValue(BROWSER_NAME);
-        String hubUrl = TestCache.getStringValue(HUB_URL);
+        String testEnv = TestCache.getStringValue(TEST_ENV);
 
         if (driver == null) {
-            if (hubUrl != null && !hubUrl.isEmpty()) {
-                try {
-                    log.info("Connecting to Selenium Grid hub at {}", hubUrl);
-                    switch (Objects.requireNonNull(browserName).toLowerCase()) {
-                        case "chrome" -> {
-                            log.info("Chrome driver selected for Selenium Grid");
-                            ChromeOptions chromeOptions = new ChromeOptions();
-                            driver = new RemoteWebDriver(new URL(hubUrl), chromeOptions);
-                        }
-                        case "firefox" -> {
-                            log.info("Firefox driver selected for Selenium Grid");
-                            FirefoxOptions firefoxOptions = new FirefoxOptions();
-                            driver = new RemoteWebDriver(new URL(hubUrl), firefoxOptions);
-                        }
-                        default -> throw new IllegalArgumentException("Unsupported browser: " + browserName);
-                    }
-                } catch (Exception e) {
-                    log.error("Failed to connect to Selenium Grid hub", e);
-                    throw new RuntimeException("Failed to connect to Selenium Grid", e);
-                }
-            } else {
-                switch (Objects.requireNonNull(browserName).toLowerCase()) {
-                    case "chrome" -> {
-                        log.info("Chrome driver selected locally");
-                        driver = new ChromeDriver();
-                    }
-                    case "firefox" -> {
-                        log.info("Firefox driver selected locally");
-                        driver = new FirefoxDriver();
-                    }
-                    default -> throw new IllegalArgumentException("Unsupported browser: " + browserName);
-                }
+            if ("remote".equalsIgnoreCase(testEnv)) {
+                driver = getRemoteEnv();
+           } else
+            //*  if ("local".equalsIgnoreCase(testEnv)) *//
+             {
+                driver = getLocalEnv();
             }
         }
         return driver;
+    }
+    private WebDriver getLocalEnv() {
+        String browserName = TestCache.getStringValue(BROWSER_NAME);
+
+        switch (Objects.requireNonNull(browserName).toLowerCase()) {
+            case "chrome" -> {
+                log.info("Chrome driver selected locally");
+                return new ChromeDriver();
+            }
+            case "firefox" -> {
+                log.info("Firefox driver selected locally");
+                return new FirefoxDriver();
+            }
+            default -> throw new IllegalArgumentException("Unsupported browser: " + browserName);
+        }
+    }
+    private WebDriver getRemoteEnv() {
+        String browserName = TestCache.getStringValue(BROWSER_NAME);
+        String hubUrl = PropertyReader.getProperty("hub.url").toLowerCase();
+        try {
+            log.info("Connecting to Selenium Grid hub at {}", hubUrl);
+            switch (Objects.requireNonNull(browserName).toLowerCase()) {
+                case "chrome" -> {
+                    log.info("Chrome driver selected for Selenium Grid");
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    return new RemoteWebDriver(new URL(hubUrl), chromeOptions);
+                }
+                case "firefox" -> {
+                    log.info("Firefox driver selected for Selenium Grid");
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    return new RemoteWebDriver(new URL(hubUrl), firefoxOptions);
+                }
+                default -> throw new IllegalArgumentException("Unsupported browser: " + browserName);
+            }
+        } catch (Exception e) {
+            log.error("Failed to connect to Selenium Grid hub", e);
+            throw new RuntimeException("Failed to connect to Selenium Grid", e);
+        }
     }
 
     @Override

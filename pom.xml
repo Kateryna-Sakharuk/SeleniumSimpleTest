@@ -129,6 +129,12 @@
                         <!--suppress UnresolvedMavenProperty -->
                         <suiteXmlFile>${suite}</suiteXmlFile>
                     </suiteXmlFiles>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>io.qameta.allure.testng.AllureTestNg</value>
+                        </property>
+                    </properties>
                     <systemPropertyVariables>
                         <!--suppress UnresolvedMavenProperty -->
                         <browserName>${browserName}</browserName>
@@ -162,8 +168,6 @@
                     <reportDirectory>${basedir}/target/allure-report</reportDirectory>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
-
 </project>
