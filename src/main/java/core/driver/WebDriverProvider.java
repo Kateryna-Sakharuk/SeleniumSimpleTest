@@ -33,7 +33,6 @@ public class WebDriverProvider implements IWebDriverProvider {
             if ("remote".equalsIgnoreCase(testEnv)) {
                 driver = getRemoteEnv();
            } else
-            //*  if ("local".equalsIgnoreCase(testEnv)) *//
              {
                 driver = getLocalEnv();
             }

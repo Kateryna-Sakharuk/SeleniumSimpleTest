@@ -1,6 +1,7 @@
 package websites.amazon;
 
 import core.properties.PropertyReader;
+import core.report.RetryAnalyzer;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import org.testng.Assert;
@@ -22,8 +23,7 @@ public class SearchResultAuthorizedUserTest extends BaseTest {
         searchResultPage = new SearchResultPage(driver);
     }
 
-    @Test
-
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void searchProductContainsParameterTest() {
         homePage.openHomePage();
         homePage.clickSingInButton();

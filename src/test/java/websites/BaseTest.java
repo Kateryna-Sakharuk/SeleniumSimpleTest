@@ -12,6 +12,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import static core.cache.TestCacheKey.BROWSER_NAME;
@@ -24,7 +25,7 @@ public class BaseTest {
     protected PropertyReader propertyReader;
     @BeforeClass
     @Parameters({"browserName", "testEnv", "testData"})
-    public void setUp( String browserName, String testEnv, String testData) {
+    public void setUp(@Optional("chrome") String browserName,@Optional("local") String testEnv, @Optional("amazonTestData.properties") String testData) {
         TestCache.put(BROWSER_NAME, browserName);
         TestCache.put(TEST_ENV, testEnv);
         propertyReader = new PropertyReader(testData);
