@@ -2,7 +2,6 @@ package websites.amazon;
 
 import core.cache.TestCache;
 import core.properties.PropertyReader;
-import core.report.RetryAnalyzer;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pageobject.amazon.AddToListModal;
@@ -34,7 +33,7 @@ public class ShoppingListTest extends BaseTest {
         addToListModal = new AddToListModal(driver);
     }
 
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test
     public void searchProductTest() {
         homePage.openHomePage();
         homePage.clickSingInButton();

@@ -1,6 +1,5 @@
 package websites.google;
 import core.properties.PropertyReader;
-import core.report.RetryAnalyzer;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -22,7 +21,7 @@ public class GoogleFailedSearchResultTest extends BaseTest {
             googleSearchResultPage = new GoogleSearchResultPage(driver);
         }
 
-        @Test(retryAnalyzer = RetryAnalyzer.class)
+        @Test
         public void searchProductContainsParameterTest() {
             googleHomePage.openHomePage();
             googleHomePage.productSearch(PropertyReader.getProperty("search.parameters"));

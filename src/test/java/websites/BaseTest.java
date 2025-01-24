@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.Reporter;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
@@ -23,9 +23,10 @@ public class BaseTest {
     protected IWebDriverProvider driver;
     public static final Logger logger = LogManager.getLogger("");
     protected PropertyReader propertyReader;
+
     @BeforeClass
     @Parameters({"browserName", "testEnv", "testData"})
-    public void setUp(@Optional("chrome") String browserName,@Optional("local") String testEnv, @Optional("amazonTestData.properties") String testData) {
+    public void setUp(@Optional("chrome") String browserName, @Optional("local") String testEnv, @Optional("amazonTestData.properties") String testData) {
         TestCache.put(BROWSER_NAME, browserName);
         TestCache.put(TEST_ENV, testEnv);
         propertyReader = new PropertyReader(testData);
@@ -35,7 +36,7 @@ public class BaseTest {
         context.setAttribute("WebDriver", driver.getWebDriver());
 
     }
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.closeBrowser();

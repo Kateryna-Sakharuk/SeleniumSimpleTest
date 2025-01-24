@@ -27,18 +27,13 @@ public class WebDriverProvider implements IWebDriverProvider {
 
     @Override
     public WebDriver getWebDriver() {
-        String testEnv = TestCache.getStringValue(TEST_ENV);
-
         if (driver == null) {
-            if ("remote".equalsIgnoreCase(testEnv)) {
-                driver = getRemoteEnv();
-           } else
-             {
-                driver = getLocalEnv();
-            }
+            String testEnv = TestCache.getStringValue(TEST_ENV);
+            driver = "remote".equalsIgnoreCase(testEnv) ? getRemoteEnv() : getLocalEnv();
         }
         return driver;
     }
+
     private WebDriver getLocalEnv() {
         String browserName = TestCache.getStringValue(BROWSER_NAME);
 

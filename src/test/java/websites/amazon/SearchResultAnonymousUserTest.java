@@ -1,7 +1,6 @@
 package websites.amazon;
 
 import core.properties.PropertyReader;
-import core.report.RetryAnalyzer;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -25,7 +24,7 @@ public class SearchResultAnonymousUserTest extends BaseTest {
         searchResultPage = new SearchResultPage(driver);
     }
 
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test
     public void searchProductContainsParameterTest() {
         homePage.openHomePage();
         homePage.productSearch(PropertyReader.getProperty("search.parameters"));

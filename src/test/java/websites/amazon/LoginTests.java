@@ -1,7 +1,7 @@
 package websites.amazon;
 
 import core.properties.PropertyReader;
-import core.report.RetryAnalyzer;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ public class LoginTests extends BaseTest {
         BaseTest.logger.info("set up pages message");
     }
 
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test
     public void userAuthorizationTest() {
         homePage.openHomePage();
         homePage.clickSingInButton();

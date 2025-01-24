@@ -1,31 +1,30 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="TestingSuite" parallel="false" thread-count="1">
-    <parameter name="browserName" value="chrome" />
-    <parameter name="testEnv" value="local"/>
     <parameter name="testData" value="amazonTestData.properties"/>
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg" />
         <listener class-name="core.report.TestResultsListener" />
         <listener class-name="core.report.TestReporter" />
+        <listener class-name="core.report.FailedClassesAnalyzer" />
     </listeners>
     <test name="LoginTest">
         <classes>
             <class name="websites.amazon.LoginTests" />
         </classes>
     </test>
-<!--    <test name="SearchResultAnonymousUserTest">-->
-<!--        <classes>-->
-<!--            <class name="websites.amazon.SearchResultAnonymousUserTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--   <test name="SearchResultAuthorizedUserTest">-->
-<!--        <classes>-->
-<!--            <class name="websites.amazon.SearchResultAuthorizedUserTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="ShoppingListTest">-->
-<!--        <classes>-->
-<!--            <class name="websites.amazon.ShoppingListTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="SearchResultAnonymousUserTest">
+        <classes>
+            <class name="websites.amazon.SearchResultAnonymousUserTest" />
+        </classes>
+    </test>
+   <test name="SearchResultAuthorizedUserTest">
+        <classes>
+            <class name="websites.amazon.SearchResultAuthorizedUserTest" />
+        </classes>
+    </test>
+    <test name="ShoppingListTest">
+        <classes>
+            <class name="websites.amazon.ShoppingListTest" />
+        </classes>
+    </test>
 </suite>
