@@ -34,6 +34,14 @@
         <download-maven-plugin.version>1.6.2</download-maven-plugin.version>
     </properties>
 
+    <repositories>
+        <!-- Jenkins Repository -->
+        <repository>
+            <id>jenkins-repo</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- Selenium Java -->
         <dependency>
@@ -113,6 +121,12 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.11.0</version> <!-- Use the latest version -->
+        </dependency>
+
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>flaky-test-handler</artifactId>
+            <version>1.3.165.v8c796143641b_</version> <!-- Adjust the version as necessary -->
         </dependency>
 
     </dependencies>

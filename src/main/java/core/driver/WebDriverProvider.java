@@ -34,44 +34,36 @@ public class WebDriverProvider implements IWebDriverProvider {
         return driver;
     }
 
-    private WebDriver getLocalEnv() {
-        String browserName = TestCache.getStringValue(BROWSER_NAME);
-
-        switch (Objects.requireNonNull(browserName).toLowerCase()) {
-            case "chrome" -> {
-                log.info("Chrome driver selected locally");
-                return new ChromeDriver();
+    private WebDriver createWebDriver(String browserName, boolean isRemote, String... hubUrl) {
+        browserName = Objects.requireNonNull(browserName).toLowerCase();
+        try {
+            switch (browserName) {
+                case "chrome":
+                    log.info("{} driver selected", isRemote ? "Chrome (Remote)" : "Chrome");
+                    return isRemote ? new RemoteWebDriver(new URL(hubUrl[0]), new ChromeOptions()) : new ChromeDriver();
+                case "firefox":
+                    log.info("{} driver selected", isRemote ? "Firefox (Remote)" : "Firefox");
+                    return isRemote ? new RemoteWebDriver(new URL(hubUrl[0]), new FirefoxOptions()) : new FirefoxDriver();
+                default:
+                    throw new IllegalArgumentException("Unsupported browser: " + browserName);
             }
-            case "firefox" -> {
-                log.info("Firefox driver selected locally");
-                return new FirefoxDriver();
-            }
-            default -> throw new IllegalArgumentException("Unsupported browser: " + browserName);
+        } catch (Exception e) {
+            log.error("Error creating WebDriver", e);
+            throw new RuntimeException("Failed to create WebDriver", e);
         }
     }
+
+    private WebDriver getLocalEnv() {
+        String browserName = TestCache.getStringValue(BROWSER_NAME);
+        return createWebDriver(browserName, false);
+    }
+
     private WebDriver getRemoteEnv() {
         String browserName = TestCache.getStringValue(BROWSER_NAME);
         String hubUrl = PropertyReader.getProperty("hub.url").toLowerCase();
-        try {
-            log.info("Connecting to Selenium Grid hub at {}", hubUrl);
-            switch (Objects.requireNonNull(browserName).toLowerCase()) {
-                case "chrome" -> {
-                    log.info("Chrome driver selected for Selenium Grid");
-                    ChromeOptions chromeOptions = new ChromeOptions();
-                    return new RemoteWebDriver(new URL(hubUrl), chromeOptions);
-                }
-                case "firefox" -> {
-                    log.info("Firefox driver selected for Selenium Grid");
-                    FirefoxOptions firefoxOptions = new FirefoxOptions();
-                    return new RemoteWebDriver(new URL(hubUrl), firefoxOptions);
-                }
-                default -> throw new IllegalArgumentException("Unsupported browser: " + browserName);
-            }
-        } catch (Exception e) {
-            log.error("Failed to connect to Selenium Grid hub", e);
-            throw new RuntimeException("Failed to connect to Selenium Grid", e);
-        }
+        return createWebDriver(browserName, true, hubUrl);
     }
+
 
     @Override
     public void maximizeWindow() {
