@@ -122,13 +122,6 @@
             <artifactId>commons-io</artifactId>
             <version>2.11.0</version> <!-- Use the latest version -->
         </dependency>
-
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>flaky-test-handler</artifactId>
-            <version>1.3.165.v8c796143641b_</version> <!-- Adjust the version as necessary -->
-        </dependency>
-
     </dependencies>
 
     <build>

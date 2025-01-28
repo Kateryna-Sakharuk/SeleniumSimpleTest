@@ -7,7 +7,6 @@
         <listener class-name="io.qameta.allure.testng.AllureTestNg" />
         <listener class-name="core.report.TestResultsListener" />
         <listener class-name="core.report.TestReporter" />
-        <listener class-name="core.report.FailedClassesAnalyzer" />
     </listeners>
     <test name="GoogleFailedSearchProduct">
         <classes>
