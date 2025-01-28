@@ -34,13 +34,6 @@
         <download-maven-plugin.version>1.6.2</download-maven-plugin.version>
     </properties>
 
-    <repositories>
-        <!-- Jenkins Repository -->
-        <repository>
-            <id>jenkins-repo</id>
-            <url>https://repo.jenkins-ci.org/public/</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <!-- Selenium Java -->

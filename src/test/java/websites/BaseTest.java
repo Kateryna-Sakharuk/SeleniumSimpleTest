@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.Reporter;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
@@ -36,7 +36,7 @@ public class BaseTest {
         context.setAttribute("WebDriver", driver.getWebDriver());
 
     }
-    @AfterMethod
+    @AfterTest
     public void tearDown() {
         if (driver != null) {
             driver.closeBrowser();
