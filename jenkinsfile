@@ -1,8 +1,14 @@
 pipeline {
     agent any
+    parameters {
+        choice choices: ['google-failed-test-suite.xml', 'google-test-suite.xml'], name: 'Suite'
+        choice choices: ['remote', 'local'], name: 'TestEnv'
+    }
+
     environment {
         WEBDRIVER_CHROME_DRIVER = 'C:/driver/chromedriver.exe'
     }
+
     stages {
         stage('Checkout') {
             steps {
@@ -11,23 +17,28 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
+                   script {
+                echo "Selected Suite: ${params.Suite}"
+                echo "Selected Test Environment: ${params.TestEnv}"
+
                 bat """
-                mvn clean test ^
-                -Dsuite=src/test/resources/google-failed-test-suite.xml ^
+                 mvn clean test ^
+                -Dsuite=src/test/resources/suits/google/${params.Suite} ^
                 -DbrowserName=chrome ^
-                -DtestEnv=local ^
+                -DtestEnv=${params.TestEnv} ^
                 -Dwebdriver.chrome.driver=%WEBDRIVER_CHROME_DRIVER%
                 """
+                }
             }
         }
+
         stage('Copy Allure History') {
             steps {
                 bat """
                 if exist "allure-report\\history" (
-                xcopy /E /I /Y "allure-report\\history" "target\\allure-results\\history"
-                   )
+                    xcopy /E /I /Y "allure-report\\history" "target\\allure-results\\history"
+                )
                 """
-
             }
         }
     }
@@ -41,4 +52,3 @@ pipeline {
         }
     }
 }
-

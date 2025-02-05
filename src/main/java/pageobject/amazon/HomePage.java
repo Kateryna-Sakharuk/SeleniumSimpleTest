@@ -19,10 +19,8 @@ public class HomePage extends AbstractPage {
     WebElement accountNameElement;
     @FindBy(xpath = "//input[@placeholder = 'Search Amazon']")
     WebElement searchField;
-
     @FindBy(xpath = "//input[@id = 'nav-search-submit-button']")
     WebElement searchSubmitButton;
-
     CaptchaAlertModal captchaAlertModal;
 
     public HomePage(IWebDriverProvider driver) {
@@ -30,16 +28,19 @@ public class HomePage extends AbstractPage {
         captchaAlertModal = new CaptchaAlertModal(driver);
         PageFactory.initElements(driver.getWebDriver(), this);
     }
+
     @Step("Click on the Sign In button")
     public void clickSingInButton() {
         waitUntilElementVisible(singInButton);
         singInButton.click();
     }
+
     @Step("Open the home page and handle captcha if present")
     public void openHomePage() {
         openWindow(PropertyReader.getProperty("base.url"));
         captchaAlertModal.handleCaptchaIfPresent();
     }
+
     @Step("Check if the Amazon header logo is displayed")
     public boolean isAmazonHeaderLogoDisplayed() {
         return amazonHeaderLogo.isDisplayed();
@@ -49,10 +50,12 @@ public class HomePage extends AbstractPage {
     public boolean isHomePageMainBodyDisplayed() {
         return homePageBody.isDisplayed();
     }
+
     @Step("Verify if account name contains the expected text: {accountName}")
     public boolean isAccountNameContainsText(String accountName) {
         return accountNameElement.getText().contains(accountName);
     }
+
     @Step("Search for a product: {productName}")
     public void productSearch(String productName) {
         searchField.click();

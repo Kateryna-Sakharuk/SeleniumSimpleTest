@@ -1,7 +1,7 @@
 package pageobject.amazon;
 
+import core.cache.TestCacheDecorator;
 import core.driver.IWebDriverProvider;
-import core.cache.TestCache;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +27,6 @@ public class ProductDetailPage extends AbstractPage {
     @Step("Save the first product's name: {productName} to the test cache")
     public void saveFirstProductName() {
         String productName = firstProductTitle.getText();
-        TestCache.put(PRODUCT_NAME, productName);
+        TestCacheDecorator.put(PRODUCT_NAME, productName);
     }
 }

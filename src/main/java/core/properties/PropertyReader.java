@@ -6,6 +6,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+//SRP -> is responsible for only one task - reading configuration properties from files
+//OCP -> class can be extended (ex. to support other configuration file formats),
+// but it does not change to add new features.
 public class PropertyReader {
     private final String BASE_PROPERTY_PATH = "src/test/resources/properties/%s";
     private static final Properties properties = new Properties();

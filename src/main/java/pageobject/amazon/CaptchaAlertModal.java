@@ -11,10 +11,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobject.AbstractPage;
 
+import java.sql.DriverManager;
 import java.time.Duration;
 
 public class CaptchaAlertModal extends AbstractPage {
-    private static final Logger log = LogManager.getLogger(java.sql.DriverManager.class.getSimpleName());
+    private static final Logger log = LogManager.getLogger(DriverManager.class.getSimpleName());
     @FindBy(xpath = "//div[@class='a-box a-alert a-alert-info a-spacing-base']//h4")
     WebElement captcha;
 

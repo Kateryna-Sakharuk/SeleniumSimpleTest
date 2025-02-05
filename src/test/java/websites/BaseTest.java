@@ -1,6 +1,8 @@
 package websites;
 
-import core.cache.TestCache;
+import core.cache.TestCacheDecorator;
+import core.driver.DefaultWebDriverFactory;
+import core.driver.IWebDriverFactory;
 import core.driver.IWebDriverProvider;
 import core.driver.WebDriverProvider;
 import core.properties.PropertyReader;
@@ -23,18 +25,21 @@ public class BaseTest {
     protected IWebDriverProvider driver;
     public static final Logger logger = LogManager.getLogger("");
     protected PropertyReader propertyReader;
+    private IWebDriverFactory webDriverFactory;
 
     @BeforeClass
     @Parameters({"browserName", "testEnv", "testData"})
     public void setUp(@Optional("chrome") String browserName, @Optional("local") String testEnv, @Optional("amazonTestData.properties") String testData) {
-        TestCache.put(BROWSER_NAME, browserName);
-        TestCache.put(TEST_ENV, testEnv);
+        TestCacheDecorator.put(BROWSER_NAME, browserName);
+        TestCacheDecorator.put(TEST_ENV, testEnv);
+
         propertyReader = new PropertyReader(testData);
-        driver = new WebDriverProvider();
+        webDriverFactory = new DefaultWebDriverFactory(); // Initialize explicitly.
+        driver = WebDriverProvider.getInstance(webDriverFactory); // Pass factory to provider.
         driver.getWebDriver();
+
         ITestContext context = Reporter.getCurrentTestResult().getTestContext();
         context.setAttribute("WebDriver", driver.getWebDriver());
-
     }
     @AfterTest
     public void tearDown() {
