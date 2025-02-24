@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    environment {
+        WEBDRIVER_CHROME_DRIVER = 'C:/driver/chromedriver.exe'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Kateryna-Sakharuk/SeleniumSimpleTest'
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                bat """
+                mvn clean test ^
+                -Dheadless=false ^
+                -Dsuite=src/test/resources/testng.xml ^
+                -DbrowserName=chrome ^
+                -DtestEnv=local ^
+                -Dwebdriver.chrome.driver=%WEBDRIVER_CHROME_DRIVER%
+                """
+            }
+        }
+    }
+    post {
+        always {
+            allure([
+                includeProperties: false,
+                jdk: '',
+                results: [[path: 'C:/Users/katya/Desktop/TA/tasks/seleniumSimpleTest/allure-report']]
+            ])
+        }
+    }
+}
