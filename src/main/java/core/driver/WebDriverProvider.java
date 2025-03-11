@@ -1,6 +1,6 @@
 package core.driver;
 
-import core.cache.TestCacheDecorator;
+import core.cache.TestCache;
 import core.properties.PropertyReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -54,20 +54,20 @@ public class WebDriverProvider implements IWebDriverProvider {
     @Override
     public WebDriver getWebDriver() {
         if (driver == null) {
-            String testEnv = TestCacheDecorator.getStringValue(TEST_ENV);
+            String testEnv = TestCache.getStringValue(TEST_ENV);
             driver = "remote".equalsIgnoreCase(testEnv) ? getRemoteEnv() : getLocalEnv();
         }
         return driver;
     }
 
     private WebDriver getRemoteEnv() {
-        String browserName = TestCacheDecorator.getStringValue(BROWSER_NAME);
+        String browserName = TestCache.getStringValue(BROWSER_NAME);
         String hubUrl = PropertyReader.getProperty("hub.url").toLowerCase();
         return webDriverFactory.createWebDriver(browserName, true, hubUrl);
     }
 
     private WebDriver getLocalEnv() {
-        String browserName = TestCacheDecorator.getStringValue(BROWSER_NAME);
+        String browserName = TestCache.getStringValue(BROWSER_NAME);
         return webDriverFactory.createWebDriver(browserName, false);
     }
 }

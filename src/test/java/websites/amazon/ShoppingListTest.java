@@ -1,6 +1,6 @@
 package websites.amazon;
 
-import core.cache.TestCacheDecorator;
+import core.cache.TestCache;
 import core.properties.PropertyReader;
 import core.report.RetryAnalyzer;
 import org.testng.Assert;
@@ -47,6 +47,6 @@ public class ShoppingListTest extends BaseTest {
         productDetailPage.addProductToShoppingList();
         addToListModal.clickYourListButton();
 
-        Assert.assertEquals(shoppingList.getFirstProductName(), TestCacheDecorator.getStringValue(PRODUCT_NAME), "The names do not match!");
+        Assert.assertEquals(shoppingList.getFirstProductName(), TestCache.getStringValue(PRODUCT_NAME), "The names do not match!");
     }
 }

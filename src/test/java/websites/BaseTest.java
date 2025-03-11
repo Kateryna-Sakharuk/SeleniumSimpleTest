@@ -1,6 +1,6 @@
 package websites;
 
-import core.cache.TestCacheDecorator;
+import core.cache.TestCache;
 import core.driver.DefaultWebDriverFactory;
 import core.driver.IWebDriverFactory;
 import core.driver.IWebDriverProvider;
@@ -30,8 +30,8 @@ public class BaseTest {
     @BeforeClass
     @Parameters({"browserName", "testEnv", "testData"})
     public void setUp(@Optional("chrome") String browserName, @Optional("local") String testEnv, @Optional("amazonTestData.properties") String testData) {
-        TestCacheDecorator.put(BROWSER_NAME, browserName);
-        TestCacheDecorator.put(TEST_ENV, testEnv);
+        TestCache.put(BROWSER_NAME, browserName);
+        TestCache.put(TEST_ENV, testEnv);
 
         propertyReader = new PropertyReader(testData);
         webDriverFactory = new DefaultWebDriverFactory(); // Initialize explicitly.
