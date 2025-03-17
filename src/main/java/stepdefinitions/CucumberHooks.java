@@ -5,6 +5,7 @@ import core.driver.DefaultWebDriverFactory;
 import core.driver.IWebDriverFactory;
 import core.driver.IWebDriverProvider;
 import core.driver.WebDriverProvider;
+import core.properties.PropertyReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.apache.logging.log4j.LogManager;
@@ -19,6 +20,8 @@ public class CucumberHooks {
     @Before
     public void setUp() {
         logger.info("Initializing WebDriver");
+
+        PropertyReader propertyReader = new PropertyReader();
 
         if (TestCache.getStringValue(BROWSER_NAME) == null) {
             TestCache.put(BROWSER_NAME, "chrome");
