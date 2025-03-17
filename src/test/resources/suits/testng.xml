@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="CucumberTestSuite" parallel="false" thread-count="1">
+    <parameter name="testData" value="amazonTestData.properties"/>
+    <parameter name="browserName" value="chrome"/>
+    <parameter name="testEnv" value="local"/>
+
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+        <listener class-name="core.report.TestResultsListener"/>
+        <listener class-name="core.report.TestReporter"/>
+    </listeners>
+
+    <test name="CucumberTests">
+        <classes>
+            <class name="runner.CucumberTestRunner"/>
+        </classes>
+    </test>
+</suite>

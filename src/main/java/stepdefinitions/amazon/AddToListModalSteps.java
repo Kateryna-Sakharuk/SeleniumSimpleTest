@@ -1,7 +1,8 @@
-package stepdefinitions;
+package stepdefinitions.amazon;
 
 import io.cucumber.java.en.When;
 import pageobject.amazon.AddToListModal;
+import stepdefinitions.CucumberHooks;
 
 public class AddToListModalSteps {
     private final AddToListModal addToListModal = new AddToListModal(CucumberHooks.getDriver());
