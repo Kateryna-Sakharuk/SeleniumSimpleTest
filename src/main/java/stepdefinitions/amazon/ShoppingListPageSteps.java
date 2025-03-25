@@ -3,7 +3,7 @@ import io.cucumber.java.en.Then;
 
 import org.testng.Assert;
 import pageobject.amazon.ShoppingList;
-import stepdefinitions.CucumberHooks;
+import hook.CucumberHooks;
 
 
 public class ShoppingListPageSteps {

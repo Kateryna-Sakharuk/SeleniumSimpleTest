@@ -1,10 +1,11 @@
 package stepdefinitions.amazon;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import pageobject.amazon.SearchResultPage;
-import stepdefinitions.CucumberHooks;
+import hook.CucumberHooks;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class SearchResultPageSteps {
         searchResultPage.clickOnFirstProduct();
     }
 
-    @When("User retrieves the list of product titles from the search results")
+    @And("User retrieves the list of product titles from the search results")
     public void theUserRetrievesTheListOfProductTitles() {
         searchResults = searchResultPage.getProductResult();
     }

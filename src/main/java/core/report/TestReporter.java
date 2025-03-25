@@ -16,7 +16,6 @@ import org.testng.xml.XmlSuite;
 
 public class TestReporter implements IReporter {
     static final Logger logger = LogManager.getLogger("");
-
     @Override
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites,
                                String outputDirectory) {

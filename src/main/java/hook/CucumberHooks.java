@@ -1,4 +1,4 @@
-package stepdefinitions;
+package hook;
 
 import core.cache.TestCache;
 import core.driver.DefaultWebDriverFactory;

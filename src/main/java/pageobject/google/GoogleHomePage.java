@@ -20,6 +20,7 @@ public class GoogleHomePage extends AbstractPage {
 
     @FindBy(xpath = "(//div[@role = 'option'])[1]")
     WebElement firstRandomResult;
+
     @Step("Open the home page")
     public void openHomePage() {
         openWindow(PropertyReader.getProperty("base.url"));

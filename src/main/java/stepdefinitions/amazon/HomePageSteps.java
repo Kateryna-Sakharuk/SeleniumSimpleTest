@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import pageobject.amazon.HomePage;
-import stepdefinitions.CucumberHooks;
+import hook.CucumberHooks;
 
 public class HomePageSteps {
     private final HomePage homePage = new HomePage(CucumberHooks.getDriver());

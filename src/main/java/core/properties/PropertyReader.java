@@ -13,8 +13,6 @@ import java.util.Properties;
 public class PropertyReader {
     private static final String BASE_PROPERTY_PATH = "src/test/resources/properties/%s";
     private static final Properties properties = new Properties();
-
-    // Static block ensures properties are loaded before any test runs
     static {
         String testData = System.getProperty("testData", "amazonTestData.properties");
         loadProperties(testData);
